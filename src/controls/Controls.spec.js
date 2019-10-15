@@ -16,6 +16,8 @@ test("it renders correctly", () => {
       const container= render(<Controls />)
       expect(container.queryByText('Lock Gate')).toBeInTheDocument();
       expect(container.queryByText('Close Gate')).toBeInTheDocument();
+      fireEvent.click(container.getByTestId('closed'))
+      expect(container.getByTestId('closed')).toHaveTextContent(/Open Gate/i)
   })
 
   test('the closed toggle button is disabled if the gate is locked',()=>{
