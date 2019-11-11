@@ -29,8 +29,14 @@ test("displays if gate is open/closed and if it is locked/unlocked", () => {
 
 test("displays 'Closed' if the `closed` prop is `true` and 'Open' if otherwise", () => {
   const container = render(<Display closed={true} />);
-  expect(container.queryByText(/closed/i) || container.queryByText(/open/i)).toBeInTheDocument();
+  expect(container.queryByText(/closed/i)).toBeInTheDocument();
+
 });
+
+test ("displays 'Closed' if the `closed` prop is `true` and 'Open' if otherwise",()=>{
+  const container = render(<Display closed={false} />);
+  expect(container.queryByText(/open/i)).toBeInTheDocument();
+})
 
 test("displays 'Locked' if the `locked` prop is `true` and 'Unlocked' if otherwise", () => {
  const container = render(<Display locked={true} />);

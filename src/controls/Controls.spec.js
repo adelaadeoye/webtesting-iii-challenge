@@ -14,10 +14,13 @@ test("it renders correctly", () => {
 
   test('provide buttons to toggle the closed and locked states',()=>{
       const container= render(<Controls />)
-      expect(container.queryByText('Lock Gate')).toBeInTheDocument();
-      expect(container.queryByText('Close Gate')).toBeInTheDocument();
-      fireEvent.click(container.getByTestId('closed'))
-      expect(container.getByTestId('closed')).toHaveTextContent(/Open Gate/i)
+      let lockButton = container.getByTestId('locked');
+      let closeButton = container.getByTestId('closed');
+      expect(lockButton).toBeInTheDocument();
+      expect(closeButton).toBeInTheDocument();
+      fireEvent.click(closeButton);
+      fireEvent.click(lockButton);
+      expect(closeButton).toHaveTextContent(/Open Gate/i)
   })
 
   test('the closed toggle button is disabled if the gate is locked',()=>{
