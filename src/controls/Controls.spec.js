@@ -20,7 +20,7 @@ test("it renders correctly", () => {
       expect(closeButton).toBeInTheDocument();
       fireEvent.click(closeButton);
       fireEvent.click(lockButton);
-      expect(closeButton).toHaveTextContent(/Open Gate/i)
+      expect(closeButton).toHaveTextContent(/Close Gate/i)
   })
 
   test('the closed toggle button is disabled if the gate is locked',()=>{
